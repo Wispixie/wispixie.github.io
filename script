@@ -74,3 +74,14 @@ particlesJS("particles-js", {
   },
   "retina_detect": true
 });
+// Bulletproof fix: Forcefully delete the cloud blocker element after 6 seconds
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const cloudStage = document.getElementById('cloud-intro-stage');
+        if (cloudStage) {
+            cloudStage.style.display = 'none';
+            cloudStage.remove(); // Removes it from the page entirely so it can't obstruct anything
+            console.log("Clouds parted! Hub is ready.");
+        }
+    }, 6000); // 6000 milliseconds = 6 seconds matches the animation end
+});
