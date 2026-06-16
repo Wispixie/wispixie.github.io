@@ -38,9 +38,19 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 100; /* Stays on top of everything during the intro */
+    z-index: 100; 
     background-color: #1a102f; 
-    pointer-events: none; /* Allows you to click things behind it once it fades */
+    pointer-events: none; /* Crucial: Allows clicks to pass through */
+    
+    /* ADD THIS: The entire stage container will fade out and vanish */
+    animation: fadeOutStage 0.5s ease forwards;
+    animation-delay: 5.5s; 
+}
+
+/* New animation to completely remove the background stage blocker */
+@keyframes fadeOutStage {
+    0% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; display: none; }
 }
 
 .cloud {
@@ -49,30 +59,30 @@ body {
     height: 100%;
     background-repeat: repeat-x;
     opacity: 0; 
-    filter: blur(8px); 
-    animation: cloudFade 7s ease-in-out forwards;
+    filter: blur(12px); /* Slightly softer edges */
+    animation: cloudFade 6s ease-in-out forwards;
 }
 
-/* Cloud Layers (Gradients create the misty, layered look) */
+/* Cloud Layers */
 .cloud-1 {
     top: 0;
-    background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 60%);
-    animation-delay: 0.5s;
+    background-image: radial-gradient(circle at 10% 20%, rgba(240, 230, 255, 0.4) 0%, rgba(255, 255, 255, 0) 60%);
+    animation-delay: 0.2s;
     z-index: 103;
 }
 
 .cloud-2 {
     bottom: 0;
     background-image: radial-gradient(circle at 80% 90%, rgba(189, 178, 255, 0.3) 0%, rgba(189, 178, 255, 0) 50%);
-    animation-delay: 1.5s;
+    animation-delay: 0.6s;
     z-index: 102;
 }
 
 .cloud-3 {
     top: -30%;
     height: 160%;
-    background-image: radial-gradient(circle at 40% 60%, rgba(255, 198, 255, 0.3) 0%, rgba(255, 198, 255, 0) 70%);
-    animation-delay: 2.5s;
+    background-image: radial-gradient(circle at 40% 60%, rgba(255, 198, 255, 0.25) 0%, rgba(255, 198, 255, 0) 70%);
+    animation-delay: 1s;
     z-index: 101;
 }
 
@@ -80,19 +90,19 @@ body {
 @keyframes cloudFade {
     0% {
         opacity: 0;
-        transform: scale(1) translateX(10%);
+        transform: scale(1) translateX(5%);
     }
-    15% {
+    20% {
+        opacity: 0.85;
+        transform: scale(1.1) translateX(-2%);
+    }
+    50% {
         opacity: 0.9;
-        transform: scale(1.1) translateX(-5%);
-    }
-    60% {
-        opacity: 1;
-        transform: scale(1.2) translateX(0%);
+        transform: scale(1.15) translateX(0%);
     }
     100% {
         opacity: 0; 
-        transform: scale(1.5) translateX(-50%); 
+        transform: scale(1.4) translateX(-40%); 
     }
 }
 
