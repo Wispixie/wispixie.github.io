@@ -64,7 +64,7 @@ body {
 .cloud-1 {
     top: -5%;
     left: 0;
-    background-image: url('https://i.imgur.com/8N69F3p.png');
+    background-image: url('https://imgur.com/a/rX6c7bZ');
     animation-delay: 0.1s;
     z-index: 103;
 }
@@ -73,7 +73,7 @@ body {
 .cloud-2 {
     bottom: -5%;
     left: -50%; /* Offset slightly so top and bottom don't look perfectly identical */
-    background-image: url('https://i.imgur.com/8N69F3p.png');
+    background-image: url('https://imgur.com/a/rX6c7bZ');
     transform: scaleY(-1); /* Flips the image upside down so the flat side is on the bottom */
     animation-delay: 0.4s;
     z-index: 102;
